@@ -20,5 +20,12 @@ public class ReusableSelenium {
 		driver.findElement(locatorname).clear();
 		driver.findElement(locatorname).sendKeys(value);
 	}
+	
+	public static void click(By locatorname) {
+		driver.findElement(locatorname).click();
+	}
+	public static void getCurrentUrl(String url) {
+		url=driver.getCurrentUrl();
+	}
 
 }

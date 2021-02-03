@@ -1,10 +1,9 @@
 package com.javaprogramms;
 
 class Employee{
-	float salary;
-	String name;
-	int empid;
-	float bonus;
+	String organizationname= "xyz";
+	
+
 }
 
 class Programmer extends Employee{
@@ -13,6 +12,7 @@ class Programmer extends Employee{
 		System.out.println("Salary of the Employee is:"+(salary+bonus));
 		System.out.println("Name of the employee is:"+name);
 		System.out.println("Empid of the employee is:"+empid);
+		System.out.println("The organization name is:"+organizationname);
 		
 	}
 }

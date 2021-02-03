@@ -1,28 +1,29 @@
 package com.seleniumscripts;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.firefox.FirefoxDriver;
+
+import com.selenium.reusable.ReusableSelenium;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class NavigationCommands {
+public class NavigationCommands extends ReusableSelenium{
 
 	public static void main(String[] args) throws InterruptedException {
-		WebDriverManager.firefoxdriver().setup();
-		FirefoxDriver driver=new FirefoxDriver();
-		driver.get("https://www.selenium.dev/");
-		driver.findElement(By.linkText("Downloads")).click();
+		launchbrowser();
+		openapp("https://www.selenium.dev/");
 		Thread.sleep(3000);
-		driver.findElement(By.linkText("Projects")).click();
-		Thread.sleep(3000);
-		driver.findElement(By.linkText("Documentation")).click();
-		Thread.sleep(3000);
+		click(By.linkText("Downloads"));
+		click(By.linkText("Projects"));
+		click(By.linkText("Documentation"));
 		driver.navigate().back();
-		Thread.sleep(3000);
 		driver.navigate().forward();
-		Thread.sleep(3000);
 		driver.navigate().refresh();
-		Thread.sleep(5000);
+		String curl=driver.getCurrentUrl();
+		openapp(curl);
+		driver.navigate().to(curl);
+		driver.findElement(By.id("gsc-i-id1")).sendKeys(Keys.F5);
 		driver.close();
 
 

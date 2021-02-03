@@ -3,32 +3,26 @@ package com.seleniumscripts;
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import com.selenium.reusable.ReusableSelenium;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class LaunchBrowser {
+public class LaunchBrowser extends ReusableSelenium{
 
 	public static void main(String[] args) throws InterruptedException {
 		//System.setProperty("webdriver.chrome.driver", "C:\\Users\\Jhilly\\Downloads\\chromedriver_win32\\chromedriver.exe");
-		WebDriverManager.chromedriver().setup();
-		ChromeDriver driver=new ChromeDriver();
-		driver.get("https://www.mortgagecalculator.org/");
+		launchbrowser();
+		openapp("https://www.mortgagecalculator.org/");
+		Thread.sleep(3000);
 		String titlename=driver.getTitle();
 		System.out.println(titlename);
-		driver.findElement(By.id("homeval")).clear();
+		sendtext(By.id("homeval"),"5000");
 		Thread.sleep(3000);
-		driver.findElement(By.id("homeval")).sendKeys("5000");
+		sendtext(By.id("downpayment"),"6000");
 		Thread.sleep(3000);
-		driver.findElement(By.id("downpayment")).clear();
+		sendtext(By.id("loanamt"),"23000.0");
 		Thread.sleep(3000);
-		driver.findElement(By.id("downpayment")).sendKeys("7000");
-		Thread.sleep(3000);
-		driver.findElement(By.id("loanamt")).clear();
-		Thread.sleep(3000);
-		driver.findElement(By.id("loanamt")).sendKeys("230000.0");
-		Thread.sleep(3000);
-		driver.findElement(By.id("intrstsrate")).clear();
-		Thread.sleep(3000);
-		driver.findElement(By.id("intrstsrate")).sendKeys("3.7");
+		sendtext(By.id("intrstsrate"),"3.7");
 		Thread.sleep(3000);
 		driver.findElement(By.name("cal")).click();
 		Thread.sleep(3000);

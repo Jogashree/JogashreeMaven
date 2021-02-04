@@ -27,5 +27,18 @@ public class ReusableSelenium {
 	public static void getCurrentUrl(String url) {
 		url=driver.getCurrentUrl();
 	}
+	public static boolean isDisplayed(By locatorname) {
+		boolean status=driver.findElement(locatorname).isDisplayed();
+		return status;
+	}
+	public static boolean isEnabled(By locatorname) {
+		boolean status=driver.findElement(locatorname).isEnabled();
+		return status;
+	}
+	public static boolean isSelected(By locatorname) {
+		boolean status=driver.findElement(locatorname).isSelected();
+		return status;
+		
+	}
 
 }
